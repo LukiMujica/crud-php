@@ -30,3 +30,8 @@ if(!$_SESSION["Ingreso"]){
 		<input type="submit" value="Registrar">
 
 	</form>
+
+<?php
+
+$registrar = new EmpleadosC();
+$registrar -> RegistrarEmpleadosC();
