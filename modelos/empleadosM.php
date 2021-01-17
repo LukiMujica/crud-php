@@ -4,6 +4,8 @@ require_once "conexionBD.php";
 
 class EmpleadosM extends conexionBD{
 
+    // Registrar empleados
+
     static public function RegistrarEmpleadosM($datosC, $tablaBD){
 
         $pdo = conexionBD::cBD()->prepare("INSERT INTO $tablaBD (nombre, apellido, email, puesto, salario) VALUES (:nombre, :apellido, :email, :puesto, :salario)");
@@ -27,5 +29,19 @@ class EmpleadosM extends conexionBD{
         $pdo->close();
 
     }
+
+    // Mostrar empleados
+    static public function MostrarEmpleadosM($tablaBD){
+
+        $pdo = conexionBD::cBD()->prepare("SELECT id, nombre, apellido, email, puesto, salario FROM $tablaBD");
+
+        $pdo -> execute();
+
+        return $pdo->fetchAll();
+
+        $pdo->close();
+
+    }
+
 
 }
