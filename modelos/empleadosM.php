@@ -84,5 +84,26 @@ class EmpleadosM extends conexionBD{
 
     }
 
+    // Eliminar empleado
+    static public function BorrarEmpleadoM($datosC, $tablaBD){
+
+        $pdo = conexionBD::cBD()->prepare("DELETE FROM $tablaBD WHERE id = :id");
+
+        $pdo -> bindParam(":id", $datosC, PDO::PARAM_INT);
+
+        if($pdo -> execute()){
+
+            return "Bien";
+
+        }else{
+
+            return "Error";
+
+        }
+
+        $pdo->close();
+
+    }
+
 
 }
